@@ -14,7 +14,7 @@ public class BonusLab20CollectionsApp {
 		
 		//list to keep track of items bought
 		List<String> list = new ArrayList<>();
-		List<Double> prices = new ArrayList<>();
+		List<String> prices = new ArrayList<>();
 		
 		
 		Enumeration<String> price;
@@ -23,13 +23,13 @@ public class BonusLab20CollectionsApp {
 		//menu of items
 		Hashtable<String, String> hashtable = new Hashtable<>();
 		hashtable.put("Apple", "$0.99");
-		hashtable.put("Banana", "$0.59");
-		hashtable.put("Cauliflower", "$1.59");
-		hashtable.put("Dragonfruit", "$2.19");
-		hashtable.put("Strawberry", "$0.79");
-		hashtable.put("Grapefruit", "$1.99");
-		hashtable.put("Watermelon", "$2.09");
-		hashtable.put("Honeydew", "$3.49");
+		hashtable.put("Kiwi", "$0.59");
+		hashtable.put("Mango", "$1.59");
+		hashtable.put("Plum", "$2.19");
+		hashtable.put("Banana", "$0.79");
+		hashtable.put("Peach", "$1.99");
+		hashtable.put("Pear", "$2.09");
+		hashtable.put("Lime", "$3.49");
 		
 		
 		
@@ -41,13 +41,13 @@ public class BonusLab20CollectionsApp {
 		System.out.println();
 		
 		  String header = "Item  "  + "      Price  " + "\n"
-                  +   "==================   ";
+                  +   "=====================   ";
       System.out.println(header);
 		
 		 while(price.hasMoreElements()) {
 		 items = (String) price.nextElement();
 		
-	      System.out.println(items + "  " + hashtable.get(items));
+	      System.out.println(items + " \t" + hashtable.get(items));
 
 
 		 }
@@ -57,17 +57,18 @@ public class BonusLab20CollectionsApp {
 		System.out.println();
 		System.out.println("What would you like to order?");
 		String order = sc.next();
-		 //if(hashtable.get(order) == null) {
-			// System.out.println("Sorry we don't have those.");
+		 if(hashtable.get(order) == null) {
+		 System.out.println("Sorry we don't have those.");
 		 //}else {
 		//System.out.println("Continue Shopping? (yes/no)");
 		//continueShopping = sc.next();
 		
 		
-		//}
+		}
 		
 		//adding order to list of total order
 		list.add(order);
+		prices.add(hashtable.get(order));
 		
 		System.out.println("Adding " + order + " to cart at " + hashtable.get(order) );
 
@@ -78,19 +79,36 @@ public class BonusLab20CollectionsApp {
 		
 		}while(userKnowMore.equals("yes"));
 		
+		
 		System.out.println("Thanks for you order!");
 		System.out.println("Here's what you got: ");
-		for(int i = 0; i < list.size(); i++) {
-			System.out.println(list.get(i));
-		}
-		for(int i = 0; i < prices.size(); i++) {
-			System.out.println(prices.get(i));
-		}
 		
-	
-		sc.close();
+		//I tried to print them in two columns side by side with this but coun't get it to work
+		
+//		for(int i = 0; i < prices.size(); i++) {
+//			for(int j = 0; j < list.size(); j++) {
+//				System.out.printf(list.get(j) + "\t");
+//			}
+//			   
+//			    System.out.println(prices.get(i));
+//		
+//		}
+		
+		//this was the only way I could get them to atleast someone match up
+		for(int j = 0; j < list.size(); j++) {
+			System.out.print(list.get(j) + "\t");
+		}
+		System.out.println();
+		System.out.println(prices);
+		
+//		for(int i = 0; i < prices.size(); i++) {
+//			System.out.println(prices.get(i));
+//		}
 		
 
+		sc.close();
+		
+		
 
 	}
 
